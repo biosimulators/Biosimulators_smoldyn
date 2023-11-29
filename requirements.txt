@@ -1,3 +1,5 @@
 smoldyn
 setuptools
 biosimulators-utils
+jupyterlab
+notebook
