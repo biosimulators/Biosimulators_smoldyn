@@ -12,7 +12,7 @@ __all__ = [
     'exec_sed_task',
 ]
 
-from .data_model import (SmoldynCommand, SmoldynOutputFile, SimulationChange, SimulationChangeExecution, AlgorithmParameterType,
+from biosimulators_smoldyn.data_model import (SmoldynCommand, SmoldynOutputFile, SimulationChange, SimulationChangeExecution, AlgorithmParameterType,
                          KISAO_ALGORITHMS_MAP, KISAO_ALGORITHM_PARAMETERS_MAP)
 from biosimulators_utils.combine.exec import exec_sedml_docs_in_archive
 from biosimulators_utils.config import get_config, Config  # noqa: F401
@@ -33,6 +33,7 @@ import pandas
 import re
 import tempfile
 import types  # noqa: F401
+
 
 __all__ = ['exec_sedml_docs_in_combine_archive', 'exec_sed_task', 'exec_sed_doc', 'preprocess_sed_task']
 

@@ -1,5 +1,7 @@
-from ._VERSION import __version__
-from .combine import preprocess_sed_task, exec_sed_task, exec_sed_doc, exec_sedml_docs_in_combine_archive  # noqa: F401
+from biosimulators_smoldyn._VERSION import __version__
+from biosimulators_smoldyn.combine import (
+    preprocess_sed_task, exec_sed_task, exec_sed_doc, exec_sedml_docs_in_combine_archive
+)
 import smoldyn
 
 __all__ = [

@@ -8,7 +8,7 @@ __all__ = [
     'read_simulation',
 ]
 
-from .data_model import Simulation, SimulationInstruction
+from biosimulators_smoldyn.data_model import Simulation, SimulationInstruction
 import re
 
 
