@@ -767,12 +767,16 @@ def validate_variables(variables):
     if invalid_targets:
         valid_target_output_commands = [
             'molcount',
-
-            'molcount', 'molcountinbox', 'molcountincmpt', 'molcountincmpt2', 'molcountonsurf',
-
-            'molcountspace', 'molcountspaceradial',
-            'molcountspacepolarangle', 'radialdistribution', 'radialdistribution2',
-
+            'molcount',
+            'molcountinbox',
+            'molcountincmpt',
+            'molcountincmpt2',
+            'molcountonsurf',
+            'molcountspace',
+            'molcountspaceradial',
+            'molcountspacepolarangle',
+            'radialdistribution',
+            'radialdistribution2',
             'molcountspace2d',
         ]
 
