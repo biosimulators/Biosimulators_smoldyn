@@ -12,7 +12,7 @@ __all__ = [
 import os
 import re
 import types
-from typing import Optional, List
+from typing import Optional, List, Tuple
 from biosimulators_smoldyn.data_model import Simulation as smoldynSim, SimulationInstruction
 from biosimulators_utils.model_lang.smoldyn.validation import validate_model
 from biosimulators_utils.config import Config
@@ -33,12 +33,12 @@ def get_parameters_variables_outputs_for_simulation(
         model_filename: str,
         model_language: str,
         simulation_type=UniformTimeCourseSimulation,
-        algorithm_kisao_id=None,
+        algorithm_kisao_id: str = None,
         change_level=SedDocument,
-        native_ids=False,
-        native_data_types=False,
-        config=None
-        ):
+        native_ids: bool = False,
+        native_data_types: bool = False,
+        config: Config = None
+        ) -> Tuple[List[ModelAttributeChange], List[Simulation], List[Variable]]:
     """ Get the possible observables for a simulation of a model
 
     Args:
