@@ -1,7 +1,7 @@
 from smoldyn import Simulation
 
 
-model_fp = 'biosimulators_smoldyn/Andrews-Min1.txt'
+model_fp = 'biosimulators_smoldyn/model.txt'
 simulation = Simulation.fromFile(model_fp)
 
 simulation.runSim()
