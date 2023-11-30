@@ -748,6 +748,19 @@ def validate_variables(variables):
                     shape = (int(output_args_list[-6]), int(output_args_list[-3]))
                 results_slicer = None
 
+            elif output_command == 'executiontime':
+                output_command_args = 'executiontime'
+                include_header = False
+                shape = None
+                results_slicer = functools.partial(results_key_slicer, key='executiontime')
+
+            elif output_command == 'listmols':
+                species_name, _, _ = output_args.partition(' ')
+                output_command_args = 'listmols ' + species_name
+                include_header = False
+                shape = None
+                results_slicer = functools.partial(results_key_slicer, key='listmols')
+
             else:
                 invalid_targets.append('{}: {}'.format(variable.id, variable.target))
                 output_command_args = None
