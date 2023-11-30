@@ -184,11 +184,25 @@ def get_parameters_variables_outputs_for_simulation(
             ))
 
     vars = []
+
+    # Add global commands (not specific to a given species)
     vars.append(Variable(
+        id='execution_time' if native_ids else 'execution_time',
+        name='Execution time',
+        target='executiontime',
+    ))
+
+    vars.append(Variable(
+        id='molecule_list',
+        name='Molecule list',
+        target='listmols',
+    ))
+
+    '''vars.append(Variable(
         id=None if native_ids else 'time',
         name=None if native_ids else 'Time',
         symbol=Symbol.time.value,
-    ))
+    ))'''
     for species in model.species:
         vars.append(Variable(
             id=species if native_ids else 'count_species_{}'.format(re.sub('[^a-zA-Z0-9_]', '_', species)),

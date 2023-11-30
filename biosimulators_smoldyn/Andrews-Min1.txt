@@ -108,7 +108,7 @@ compartment_mol NUMBER_MINE MinE cell
 
 
 output_files FILEROOTout.txt
-#cmd i 0 TIME_STOP 1 executiontime FILEROOTout.txt
+cmd i 0 TIME_STOP 1 executiontime FILEROOTout.txt
 cmd i 0 TIME_STOP 1 listmols FILEROOTout.txt
 
 end_file
