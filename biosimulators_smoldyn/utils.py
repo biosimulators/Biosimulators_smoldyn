@@ -32,7 +32,7 @@ from biosimulators_utils.utils.core import flatten_nested_list_of_strings
 def get_parameters_variables_outputs_for_simulation(
         model_filename: str,
         model_language: str,
-        simulation_type: Simulation,
+        simulation_type=UniformTimeCourseSimulation,
         algorithm_kisao_id=None,
         change_level=SedDocument,
         native_ids=False,
@@ -236,7 +236,7 @@ def read_simulation(filename):
     Returns:
         :obj:`Simulation`: data structure which represents the configuration of the Smoldyn simulation
     """
-    sim = Simulation()
+    sim = smoldynSim()
     param_group_counts = {}
     with open(filename, 'r') as file:
         for line in file:
