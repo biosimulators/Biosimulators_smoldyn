@@ -194,15 +194,16 @@ def get_parameters_variables_outputs_for_simulation(
 
     vars.append(Variable(
         id='molecule_list',
-        name='Molecule list',
+        name='Molecule_list',
         target='listmols',
     ))
 
-    '''vars.append(Variable(
+    vars.append(Variable(
         id=None if native_ids else 'time',
         name=None if native_ids else 'Time',
         symbol=Symbol.time.value,
-    ))'''
+    ))
+
     for species in model.species:
         vars.append(Variable(
             id=species if native_ids else 'count_species_{}'.format(re.sub('[^a-zA-Z0-9_]', '_', species)),
