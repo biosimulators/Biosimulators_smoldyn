@@ -6,9 +6,9 @@ from biosimulators_utils.config import Config
 import os
 
 
-model_fp = 'biosimulators_smoldyn/Min1/model.txt'
+model_fp = 'biosimulators_smoldyn/crowding4/model.txt'
 
-sed_fp = 'biosimulators_smoldyn/Min1/simulation.sedml'
+sed_fp = 'biosimulators_smoldyn/crowding4/simulation.sedml'
 
 model_lang = 'urn:sedml:language:smoldyn'
 
@@ -21,6 +21,6 @@ validation = validate_variables(variables)
 
 config = Config(REPORT_FORMATS=[ReportFormat.csv])
 
-results, log = exec_sed_doc(doc=sed_fp, working_dir='biosimulators_smoldyn/Min1', base_out_path=os.getcwd(), config=config)
+results, log = exec_sed_doc(doc=sed_fp, working_dir='biosimulators_smoldyn/crowding4', base_out_path=os.getcwd(), config=config)
 
 print(results)

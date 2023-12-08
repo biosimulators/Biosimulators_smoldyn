@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sedML xmlns="http://sed-ml.org/sed-ml/level1/version3" level="1" version="3">
+  <listOfModels>
+    <model id="model" language="urn:sedml:language:smoldyn" source="model.txt"/>
+  </listOfModels>
+  <listOfSimulations>
+    <uniformTimeCourse id="simulation" initialTime="0" outputStartTime="0" outputEndTime="10" numberOfPoints="5000">
+      <algorithm kisaoID="KISAO:0000698"/>
+    </uniformTimeCourse>
+  </listOfSimulations>
+  <listOfTasks>
+    <task id="task" modelReference="model" simulationReference="simulation"/>
+  </listOfTasks>
+  <listOfDataGenerators>
+    <dataGenerator id="data_generator_molecule_list" name="Molecule_list">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <ci> variable_molecule_list </ci>
+      </math>
+      <listOfVariables>
+        <variable id="variable_molecule_list" name="Molecule_list" target="listmols" taskReference="task"/>
+      </listOfVariables>
+    </dataGenerator>
+  </listOfDataGenerators>
+  <listOfOutputs>
+    <report id="report">
+      <listOfDataSets>
+        <dataSet id="molecule_list" name="Molecule_list" label="Molecule_list" dataReference="data_generator_molecule_list"/>
+      </listOfDataSets>
+    </report>
+  </listOfOutputs>
+</sedML>
