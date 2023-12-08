@@ -12,14 +12,6 @@
     <task id="task" modelReference="model" simulationReference="simulation"/>
   </listOfTasks>
   <listOfDataGenerators>
-    <dataGenerator id="data_generator_time" name="Time">
-      <math xmlns="http://www.w3.org/1998/Math/MathML">
-        <ci> variable_time </ci>
-      </math>
-      <listOfVariables>
-        <variable id="variable_time" name="Time" symbol="urn:sedml:symbol:time" taskReference="task"/>
-      </listOfVariables>
-    </dataGenerator>
     <dataGenerator id="data_generator_molecule_list" name="Molecule_list">
       <math xmlns="http://www.w3.org/1998/Math/MathML">
         <ci> variable_molecule_list </ci>
@@ -32,8 +24,7 @@
   <listOfOutputs>
     <report id="report">
       <listOfDataSets>
-        <dataSet id="time" name="Time" label="Time" dataReference="data_generator_time"/>
-        <dataSet id="molecule_list" name="Molecule_list" label="Molecule_list" dataReference="data_generator_molecule_list"/>
+        <dataSet id="molecule_list" name="Molecule_list" label="Molecule_list" dataReference="data_generator_molecule_list" kisaoID="KISAO:0000698"/>
       </listOfDataSets>
     </report>
   </listOfOutputs>
