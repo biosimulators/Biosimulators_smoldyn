@@ -166,8 +166,8 @@ def exec_sed_task(task, variables, preprocessed_task=None, log=None, config=None
     variable_results = get_variable_results(sed_simulation.number_of_steps, variables, variable_output_cmd_map, smoldyn_output_files)
 
     # cleanup output files
-    for smoldyn_output_file in smoldyn_output_files.values():
-        os.remove(smoldyn_output_file.filename)
+    # for smoldyn_output_file in smoldyn_output_files.values():
+        # os.remove(smoldyn_output_file.filename)
 
     # log simulation
     if config.LOG:

@@ -1,5 +1,5 @@
 smoldyn
 setuptools
-biosimulators-utils
+biosimulators-utils[logging]
 jupyterlab
 notebook

@@ -2,3 +2,7 @@
 *.egg-info/
 .DS_Store
 *__pycache__/
+__pycache__
+*__pycache__
+venv
+biosimulators_smoldyn/__pycache__
