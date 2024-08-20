@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 
 setup(
-    name='biosimulators-simularium',
+    name='Biosimulators_smoldyn',
     version=__version__,
     packages=find_packages(),
     url='https://github.com/biosimulators/Biosimulators_simularium',
@@ -18,5 +18,5 @@ setup(
     long_description_content_type="text/markdown",
     entry_points={
             'console_scripts': [],
-    },
+    }
 )
