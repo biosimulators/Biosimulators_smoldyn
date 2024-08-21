@@ -16,7 +16,5 @@ setup(
     description='A Python tool for converting Biosimulators spatial simulation outputs into a Simularium-compliant format.',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    entry_points={
-            'console_scripts': [],
-    }
+    entry_points={'console_scripts': []}
 )
