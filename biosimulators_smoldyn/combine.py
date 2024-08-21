@@ -12,8 +12,16 @@ __all__ = [
     'exec_sed_task',
 ]
 
-from biosimulators_smoldyn.data_model import (SmoldynCommand, SmoldynOutputFile, SimulationChange, SimulationChangeExecution, AlgorithmParameterType,
-                         KISAO_ALGORITHMS_MAP, KISAO_ALGORITHM_PARAMETERS_MAP)
+from biosimulators_smoldyn.data_model import (
+    SmoldynCommand,
+    SmoldynOutputFile,
+    SimulationChange,
+    SimulationChangeExecution,
+    AlgorithmParameterType,
+    KISAO_ALGORITHMS_MAP,
+    KISAO_ALGORITHM_PARAMETERS_MAP
+)
+
 from biosimulators_utils.combine.exec import exec_sedml_docs_in_archive
 from biosimulators_utils.config import get_config, Config  # noqa: F401
 from biosimulators_utils.log.data_model import CombineArchiveLog, TaskLog, StandardOutputErrorCapturerLevel  # noqa: F401
@@ -25,11 +33,13 @@ from biosimulators_utils.sedml.data_model import (Task, ModelLanguage, ModelAttr
                                                   Symbol)
 from biosimulators_utils.sedml.exec import exec_sed_doc as base_exec_sed_doc
 from biosimulators_utils.utils.core import validate_str_value, parse_value, raise_errors_warnings
-from smoldyn import smoldyn
-import functools
-import os
+# from smoldyn import smoldyn
+import smoldyn
 import numpy
 import pandas
+
+import functools
+import os
 import re
 import tempfile
 import types  # noqa: F401

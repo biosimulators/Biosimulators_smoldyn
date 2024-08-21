@@ -9,8 +9,9 @@ packages = [{include = "biosimulators_smoldyn"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10"
-smoldyn = "*"
-biosimulators-utils = {version = "*", extras = ["logging"]}
+# smoldyn = "*"
+smoldyn = "^2.73"
+biosimulators-utils = {version = "^0.1.188", extras = ["logging"]}
 
 [tool.poetry.group.dev.dependencies]
 toml = "^0.10.2"
