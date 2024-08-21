@@ -2,14 +2,13 @@
 [tool.poetry]
 name = "Biosimulators_smoldyn"
 version = "1.5.0"
-description = "Simulation Verification Service and API"
+description = "BioSimulators implementation of Smoldyn"
 authors = ["Alex Patrie <alexanderpatrie@gmail.com>"]
 readme = "README.md"
 packages = [{include = "biosimulators_smoldyn"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10"
-# smoldyn = "*"
 smoldyn = "^2.73"
 biosimulators-utils = {version = "^0.1.188", extras = ["logging"]}
 
@@ -17,13 +16,10 @@ biosimulators-utils = {version = "^0.1.188", extras = ["logging"]}
 toml = "^0.10.2"
 pytest = "^8.3.2"
 
-[tool.poetry.extras]
-dev = ["api", "worker"]
-
 [tool.pytest.ini_options]
-testpaths = ["biosimulators_smoldyn"]
+testpaths = ["tests"]
 addopts = "--ignore=setup.py"
-python_files = "test.py"
+python_files = "test_smoldyn.py"
 
 [build-system]
 requires = ["poetry-core"]

@@ -2018,10 +2018,7 @@ files = [
 [package.dependencies]
 pyYaml = "*"
 
-[extras]
-dev = []
-
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10"
-content-hash = "8edef1a69363d0c9d08175232c14e2e14c1350f5ce796b1501dc8f9ad34b8e9d"
+content-hash = "8a19cd5f03a42315e7b744fa4601d0ff37f748515e6211348e9b0c30b48674e6"

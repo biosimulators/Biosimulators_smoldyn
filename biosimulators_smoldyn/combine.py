@@ -148,6 +148,8 @@ def exec_sed_task(task, variables, preprocessed_task=None, log=None, config=None
         sed_model_changes = list(filter(lambda change: change.target in preprocessed_task['sed_smoldyn_simulation_change_map'],
                                         sed_model_changes))
 
+    print(f'Preprocessed task output files dest: {preprocessed_task.get("output_files")}')
+
     # read Smoldyn configuration
     smoldyn_simulation = preprocessed_task['simulation']
 
@@ -203,7 +205,7 @@ def preprocess_sed_task(task, variables, config=None):
         config (:obj:`Config`, optional): BioSimulators common configuration
 
     Returns:
-        :obj:`dict`: preprocessed information about the task
+        :obj:`dict`: preprocessed information about the task including output_files among others.
     """
     config = config or get_config()
 
