@@ -48,7 +48,8 @@ import types  # noqa: F401
 __all__ = ['exec_sedml_docs_in_combine_archive', 'exec_sed_task', 'exec_sed_doc', 'preprocess_sed_task']
 
 
-OUTPUT_DIR = tempfile.mkdtemp()
+OUTPUT_DIR = ''
+OUTPUT_SHAPE = ()
 
 
 def exec_sedml_docs_in_combine_archive(archive_filename, out_dir, config=None):
@@ -72,11 +73,25 @@ def exec_sedml_docs_in_combine_archive(archive_filename, out_dir, config=None):
             * :obj:`SedDocumentResults`: results
             * :obj:`CombineArchiveLog`: log
     '''
+    # set output dir
     global OUTPUT_DIR
     OUTPUT_DIR = out_dir
-    results, log = exec_sedml_docs_in_archive(exec_sed_doc, archive_filename, OUTPUT_DIR,
-                                      apply_xml_model_changes=False,
-                                      config=config)
+
+    # generate results
+    results, log = exec_sedml_docs_in_archive(
+        sed_doc_executer=exec_sed_doc,
+        archive_filename=archive_filename,
+        out_dir=OUTPUT_DIR,
+        apply_xml_model_changes=False,
+        config=config
+    )
+
+    # remove temp files
+    for f in os.listdir(OUTPUT_DIR):
+        if not f.startswith('model') and f.endswith('.txt'):
+            os.remove(os.path.join(OUTPUT_DIR, f))
+
+    return results, log
 
 
 def exec_sed_doc(doc, working_dir, base_out_path, rel_out_path=None,
@@ -112,7 +127,7 @@ def exec_sed_doc(doc, working_dir, base_out_path, rel_out_path=None,
             * :obj:`ReportResults`: results of each report
             * :obj:`SedDocumentLog`: log of the document
     """
-    results, log = base_exec_sed_doc(
+    return base_exec_sed_doc(
         task_executer=exec_sed_task,
         doc=doc,
         working_dir=working_dir,
@@ -125,11 +140,6 @@ def exec_sed_doc(doc, working_dir, base_out_path, rel_out_path=None,
         log_level=log_level,
         config=config
     )
-    print(f'Results!: {results["report"].keys()}')
-    print(results.keys())
-    print(f'Result files: {os.listdir(base_out_path)}')
-
-    return results, log
 
 
 def exec_sed_task(task, variables, preprocessed_task=None, log=None, config=None):
@@ -192,30 +202,21 @@ def exec_sed_task(task, variables, preprocessed_task=None, log=None, config=None
     variable_results = get_variable_results(sed_simulation.number_of_steps, variables, variable_output_cmd_map, smoldyn_output_files)
 
     # ensure smoldyn-output and simularium files are included in output
-    global OUTPUT_DIR
     for i, smoldyn_output_file in enumerate(list(smoldyn_output_files.values())):
-        # TODO: Execute simularium here. Import: from biosimulators_simularium.exec import execute
         # get the tempfile path
         temp_smoldyn_output_filepath = smoldyn_output_file.filename
 
-        # create a unique name (to be indexed by simularium)
+        # create a unique name (to be indexed by simularium) / open the tempfile path and create str content object
         fname = f'modelout_{i}.txt'
         smoldyn_output_fp = os.path.join(OUTPUT_DIR, fname)
 
-        # open the tempfile path and create str content object
-
         # write the str content object to the smoldyn_output_fp
+        write_temp_file_to_disk(temp_fp=temp_smoldyn_output_filepath, save_fp=smoldyn_output_fp)
 
         # clean up the temp_smoldyn_output_filepath
+        os.remove(temp_smoldyn_output_filepath)
 
-        # use the smoldyn_output_fp as input to simularium
-
-        print(f'TEMP FP: {temp_smoldyn_output_filepath}')
-
-        print(f'SMOLDYN OUTPUT FILE: {smoldyn_output_fp}')
-
-    print(f'VARIABLE RESULTS IN SMOLDYN EXEC SED TASK: {variable_results}')
-    print(f'CURRENT TASK: {task.model.source}')
+        # generate simularium
 
     # log simulation
     if config.LOG:
@@ -229,6 +230,15 @@ def exec_sed_task(task, variables, preprocessed_task=None, log=None, config=None
 
     # return the values of the variables and log
     return variable_results, log
+
+
+def write_temp_file_to_disk(temp_fp: str, save_fp: str):
+    with open(temp_fp, 'r') as temp:
+        content = temp.read()
+    with open(save_fp, 'w') as save:
+        save.write(content)
+    save.close()
+    temp.close()
 
 
 def preprocess_sed_task(task, variables, config=None):
@@ -297,21 +307,19 @@ def preprocess_sed_task(task, variables, config=None):
     # write the modified Smoldyn configuration to a temporary file
     # fid, smoldyn_configuration_filename = tempfile.mkstemp(suffix='.txt')
     # os.close(fid)
+
+    # write standard modelname to dist
     global OUTPUT_DIR
     if not os.path.exists(OUTPUT_DIR):
         os.mkdir(OUTPUT_DIR)
-
     smoldyn_configuration_filename = os.path.join(OUTPUT_DIR, 'model.txt')
     write_smoldyn_simulation_configuration(simulation_configuration, smoldyn_configuration_filename)
 
-    print(f'OUTPUT DIR CONTENT: {os.listdir(OUTPUT_DIR)}')
-
     # initialize a simulation from the Smoldyn file
-    print(f'SMOLDYN CONFIG: {sed_model.source}')
     smoldyn_simulation = init_smoldyn_simulation_from_configuration_file(smoldyn_configuration_filename)
 
     # clean up temporary smoldyn configuration(model) file
-    os.remove(smoldyn_configuration_filename)
+    # os.remove(smoldyn_configuration_filename)
 
     # apply the SED algorithm parameters to the Smoldyn simulation and to the arguments to its ``run`` method
     smoldyn_simulation_attrs = {}
@@ -336,8 +344,8 @@ def preprocess_sed_task(task, variables, config=None):
     smoldyn_output_files = add_smoldyn_output_files_for_sed_variables(
         smoldyn_configuration_dirname, variables, variable_output_cmd_map, smoldyn_simulation)
 
-    for output in smoldyn_output_files.values():
-        print(f'OUTPUT FILE: {output.filename}')
+    # print(f'VARIABLE OUTPUT CMD MAP: {variable_output_cmd_map}, {smoldyn_simulation_attrs}')
+    # smoldyn_output_files['modelout'] = os.path.join(smoldyn_configuration_dirname, 'modelout.txt')
 
     # return preprocessed information
     return {
@@ -581,10 +589,10 @@ def apply_change_to_smoldyn_simulation(smoldyn_simulation, sed_change, smoldyn_c
 
     Args:
         smoldyn_simulation (:obj:`smoldyn.Simulation`): Smoldyn simulation
-        sed_change (:obj:`ModelAttributeChange`): SED model change
+        sed_change (:obj:`Union[ModelAttributeChange, str]`): SED model change
         smoldyn_change (:obj:`SimulationChange`): Smoldyn representation of the model change
     '''
-    new_value = str(sed_change.new_value).strip()
+    new_value = str(sed_change.new_value).strip() if isinstance(sed_change, ModelAttributeChange) else sed_change
     new_line = smoldyn_change.command(new_value)
     smoldyn_simulation.addCommand(new_line, 'b')
 
@@ -817,7 +825,7 @@ def validate_variables(variables):
 
             elif output_command == 'listmols':
                 species_name, _, _ = output_args.partition(' ')
-                output_command_args = 'listmols ' + species_name
+                output_command_args = 'listmols '  # + species_name
                 include_header = False
                 shape = None
                 results_slicer = functools.partial(results_key_slicer, key='listmols')
@@ -852,6 +860,7 @@ def validate_variables(variables):
             'radialdistribution',
             'radialdistribution2',
             'molcountspace2d',
+            'listmols'
         ]
 
         msg = '{} targets cannot be recorded:\n  {}\n\nTargets are supported for the following output commands:\n  {}'.format(
