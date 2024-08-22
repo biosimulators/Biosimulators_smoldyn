@@ -217,6 +217,11 @@ def exec_sed_task(task, variables, preprocessed_task=None, log=None, config=None
         os.remove(temp_smoldyn_output_filepath)
 
         # generate simularium
+        try:
+            from biosimulators_smoldyn.simularium_utils import generate_simularium_file
+            generate_simularium_file(smoldyn_output_fp=smoldyn_output_fp, output_dir=OUTPUT_DIR, simularium_filename='simulation')
+        except Exception as e:
+            print(f'ERROR: {str(e)}')
 
     # log simulation
     if config.LOG:
