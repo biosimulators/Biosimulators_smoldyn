@@ -3,7 +3,6 @@ import setuptools
 import subprocess
 import sys
 import os
-import pkg_utils
 
 from biosimulators_smoldyn import __version__
 
