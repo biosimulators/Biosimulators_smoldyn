@@ -31,8 +31,7 @@ with open("README.md", "r") as readme:
 setuptools.setup(
     name=name,
     version=__version__,
-    description=("BioSimulators-compliant command-line interface to "
-                 "the Smoldyn simulation program <https://github.com/ssandrews/Smoldyn>."),
+    description=("BioSimulators-compliant command-line interface to the Smoldyn simulation program <https://github.com/ssandrews/Smoldyn>."),
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/biosimulators/Biosimulators_Smoldynå",
