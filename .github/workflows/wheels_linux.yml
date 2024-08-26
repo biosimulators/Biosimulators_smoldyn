@@ -21,9 +21,14 @@ jobs:
       - uses: actions/checkout@v2
       - name: Building wheel in ManuLinux container
         run: |
-          ls -ltR
-          export PYPI_PASSWORD=$SMOLDYN_PYPI_TOKEN
-          cd scripts && make wheels
+            ls -ltR
+            export PYPI_PASSWORD=$SMOLDYN_PYPI_TOKEN
+            python3 setup.py sdist bdist_wheel
+      # - name: Building wheel in ManuLinux container
+      #   run: |
+      #     ls -ltR
+      #     export PYPI_PASSWORD=$SMOLDYN_PYPI_TOKEN
+      #     cd scripts && make wheels
 
       # BioSimulators
       - name: Build BioSimulators Docker image
