@@ -12,6 +12,7 @@ python = ">=3.10"
 smoldyn = ">=2.73"
 biosimulators-utils = {version = "^0.1.188", extras = ["logging"]}
 simulariumio = "^1.11.0"
+pkg-utils = "^0.0.5"
 
 [tool.poetry.group.dev.dependencies]
 toml = "^0.10.2"

@@ -9,3 +9,4 @@ biosimulators_smoldyn/__pycache__
 smoldyn-2.73-mac.tgz.1
 smoldyn-2.73-mac.tgz
 env
+.pytest_cache
