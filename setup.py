@@ -4,8 +4,6 @@ import subprocess
 import sys
 import os
 
-from biosimulators_smoldyn import __version__
-
 
 # set dirs 
 name = 'biosimulators_smoldyn'
@@ -24,6 +22,11 @@ with open("README.md", "r") as readme:
         r']\(([\w/.-]+)\)',
         r'](https://github.com/biosimulators/Biosimulators_smoldyn/blob/main/\1)',
         description2)
+    
+
+# get version
+with open(os.path.join(dirname, 'biosimulators_smoldyn', '_VERSION'), 'r') as version_file:
+    __version__ = version_file.read().strip()
 
 
 # install package
