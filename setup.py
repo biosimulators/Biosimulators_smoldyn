@@ -47,6 +47,12 @@ setuptools.setup(
         'License :: OSI Approved :: MIT License',
         'Topic :: Scientific/Engineering :: Bio-Informatics',
     ],
+    install_requires=[
+        "smoldyn>=2.73",
+        "biosimulators-utils[logging]>=0.1.188",
+        "simulariumio>=1.11.0",
+        "pkg-utils"
+    ]
     entry_points={
         'console_scripts': [
             'biosimulators-amici = biosimulators_smoldyn.__main__:main',
