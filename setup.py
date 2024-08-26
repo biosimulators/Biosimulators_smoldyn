@@ -52,7 +52,7 @@ setuptools.setup(
         "biosimulators-utils[logging]>=0.1.188",
         "simulariumio>=1.11.0",
         "pkg-utils"
-    ]
+    ],
     entry_points={
         'console_scripts': [
             'biosimulators-amici = biosimulators_smoldyn.__main__:main',
