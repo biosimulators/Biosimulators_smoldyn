@@ -1,0 +1,374 @@
+{
+    "id": "smoldyn",
+    "name": "Smoldyn",
+    "version": "2.74",
+    "description": "Computer program for cell-scale biochemical simulations.",
+    "urls": [{
+        "title": null,
+        "type": "Home page",
+        "url": "http://www.smoldyn.org/"
+      },
+      {
+        "title": null,
+        "type": "Examples",
+        "url": "http://www.smoldyn.org/archive.html"
+      },
+      {
+        "title": null,
+        "type": "Installation instructions",
+        "url": "https://smoldyn.readthedocs.io/en/latest/user/install.html"
+      },
+      {
+        "title": null,
+        "type": "Documentation",
+        "url": "https://smoldyn.readthedocs.io/"
+      },
+      {
+        "title": null,
+        "type": "Source repository",
+        "url": "https://github.com/ssandrews/Smoldyn"
+      },
+      {
+        "title": null,
+        "type": "License",
+        "url": "https://github.com/ssandrews/Smoldyn/blob/master/LICENSE"
+      },
+      {
+        "title": null,
+        "type": "Issue tracker",
+        "url": "https://github.com/ssandrews/Smoldyn/issues"
+      }
+    ],
+    "image": {
+      "url": "ghcr.io/ssandrews/smoldyn/biosimulators_smoldyn:latest",
+      "format": {
+        "namespace": "EDAM",
+        "id": "format_3973",
+        "version": null,
+        "supportedFeatures": []
+      },
+      "operatingSystemType": "Linux"
+    },
+    "cli": {
+      "packageRepository": "PyPI",
+      "package": "smoldyn",
+      "command": "python -m smoldyn.biosimulators",
+      "installationInstructions": null
+    },
+    "pythonApi": {
+      "package": "smoldyn",
+      "module": "smoldyn.biosimulators",
+      "installationInstructions": null
+    },
+    "authors": [{
+        "middleName": "S.",
+        "firstName": "Steven",
+        "lastName": "Andrews",
+        "identifiers": [{
+          "namespace": "orcid",
+          "id": "0000-0002-4576-8107",
+          "url": "https://orcid.org/0000-0002-4576-8107"
+        }]
+      },
+      {
+        "middleName": null,
+        "firstName": "Dilawar",
+        "lastName": "Singh",
+        "identifiers": [{
+          "namespace": "orcid",
+          "id": "0000-0002-4645-3211",
+          "url": "https://orcid.org/0000-0002-4645-3211"
+        }]
+      }
+    ],
+    "references": {
+      "identifiers": [{
+          "namespace": "pypi",
+          "id": "smoldyn",
+          "url": "https://pypi.org/project/smoldyn/"
+        },
+        {
+          "namespace": "bio.tools",
+          "id": "smoldyn",
+          "url": "https://bio.tools/smoldyn"
+        }
+      ],
+      "citations": [{
+          "volume": "33",
+          "issue": "5",
+          "pages": "710-717",
+          "journal": "Bioinformatics",
+          "title": "Smoldyn: particle-based simulation with rule-based modeling, improved molecular interaction and a library interface",
+          "authors": "Steve S. Andrews",
+          "year": 2017,
+          "identifiers": [{
+            "namespace": "doi",
+            "id": "10.1093/bioinformatics/btw700",
+            "url": "https://doi.org/10.1093/bioinformatics/btw700"
+          }]
+        },
+        {
+          "volume": "31",
+          "issue": "14",
+          "pages": "2406-2408",
+          "journal": "Bioinformatics",
+          "title": "Multiscale reaction-diffusion simulations with Smoldyn",
+          "authors": "Martin Robinson, Steven S. Andrews & Radek Erban",
+          "year": 2015,
+          "identifiers": [{
+            "namespace": "doi",
+            "id": "10.1093/bioinformatics/btv149",
+            "url": "https://doi.org/10.1093/bioinformatics/btv149"
+          }]
+        },
+        {
+          "pages": "519-542",
+          "volume": "804",
+          "journal": "Methods in Molecular Biology",
+          "title": "Spatial and stochastic cellular modeling with the Smoldyn simulator",
+          "authors": "Steven S. Andrews",
+          "year": 2012,
+          "identifiers": [{
+            "namespace": "doi",
+            "id": "10.1007/978-1-61779-361-5_26",
+            "url": "https://doi.org/10.1007/978-1-61779-361-5_26"
+          }]
+        },
+        {
+          "volume": "6",
+          "issue": "3",
+          "pages": "e1000705",
+          "journal": "PLoS Compututational Biology",
+          "title": "Detailed simulations of cell biology with Smoldyn 2.1",
+          "authors": "Steven S. Andrews, Nathan J. Addy, Roger Brent & Adam P. Arkin",
+          "year": 2010,
+          "identifiers": [{
+            "namespace": "doi",
+            "id": "10.1371/journal.pcbi.1000705",
+            "url": "https://doi.org/10.1371/journal.pcbi.1000705"
+          }]
+        }
+      ]
+    },
+    "license": {
+      "namespace": "SPDX",
+      "id": "LGPL-3.0-only"
+    },
+    "algorithms": [{
+      "id": "Smoldyn",
+      "name": "Smoldyn (Spatial Stochastic Simulator)",
+      "kisaoId": {
+        "namespace": "KISAO",
+        "id": "KISAO_0000057"
+      },
+      "modelingFrameworks": [{
+        "namespace": "SBO",
+        "id": "SBO_0000678"
+      }],
+      "modelFormats": [{
+        "namespace": "EDAM",
+        "id": "format_9001",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "modelChangePatterns": [
+          { "name": "Change parameter value", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "define {name}", "grammar": "Smoldyn"}},
+          { "name": "Change diffusion coefficient", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "difc {species}", "grammar": "Smoldyn"}},
+          { "name": "Change diffusion coefficient", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "difc {species}({state})", "grammar": "Smoldyn"}},
+          { "name": "Change diffusion coefficient rule", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "difc_rule {species}({state})", "grammar": "Smoldyn"}},
+          { "name": "Change surface diffusion coefficient", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "difm {species}", "grammar": "Smoldyn"}},
+          { "name": "Change surface diffusion coefficient", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "difm {species}({state})", "grammar": "Smoldyn"}},
+          { "name": "Change surface diffusion coefficient rule", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "difm_rule {species}({state})", "grammar": "Smoldyn"}},
+          { "name": "Change drift", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "drift {species}", "grammar": "Smoldyn"}},
+          { "name": "Change drift", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "drift {species}({state})", "grammar": "Smoldyn"}},
+          { "name": "Change drift rule", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "drift_rule {species}({state})", "grammar": "Smoldyn"}},
+          { "name": "Change surface drift", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "surface_drift {species}({state}) {surface} {panel-shape}", "grammar": "Smoldyn"}},
+          { "name": "Change surface drift rule", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "surface_drift_rule {species}({state}) {surface} {panel-shape}", "grammar": "Smoldyn"}},
+          { "name": "Kill molecules of a species", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "killmol {species}({state})", "grammar": "Smoldyn"}},
+          { "name": "Probabilistically kill some molecules of a species", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "killmolprob {species}({state}) {prob}", "grammar": "Smoldyn"}},
+          { "name": "Kill molecules of a species in a compartment", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "killmolincmpt {species}({state}) {surface}", "grammar": "Smoldyn"}},
+          { "name": "Kill molecules of a species on a surface", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "killmolinsphere {species}({state}) {surface}", "grammar": "Smoldyn"}},
+          { "name": "Kill molecules of a species outside the system boundaries", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "killmoloutsidesystem {species}({state})", "grammar": "Smoldyn"}},
+          { "name": "Change the molecules of a species", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "fixmolcount {species}", "grammar": "Smoldyn"}},
+          { "name": "Change the molecules of a species in a compartment", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "fixmolcountincmpt {species}({state}) {compartment}", "grammar": "Smoldyn"}},
+          { "name": "Change the molecules of a species on a surface", "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"], "target": {"value": "fixmolcountonsurf {species}({state}) {surface}]", "grammar": "Smoldyn"}}
+        ],
+      "simulationFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3685",
+        "version": "L1V3",
+        "supportedFeatures": []
+      }],
+      "simulationTypes": ["SedUniformTimeCourseSimulation"],
+      "archiveFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3686",
+        "version": "1",
+        "supportedFeatures": []
+      }],
+      "citations": [],
+      "parameters": [{
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000254"
+          },
+          "id": "accuracy",
+          "name": "accuracy",
+          "type": "float",
+          "value": "10.0",
+          "recommendedRange": ["0.0", "10.0"],
+          "availableSoftwareInterfaceTypes": ["library", "command-line application", "BioSimulators Docker image"]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000488"
+          },
+          "id": "seed",
+          "name": "seed",
+          "type": "integer",
+          "value": null,
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": ["library", "command-line application", "BioSimulators Docker image"]
+        }
+      ],
+      "outputDimensions": [{
+          "namespace": "SIO",
+          "id": "SIO_000418"
+        },
+        {
+          "namespace": "SIO",
+          "id": "SIO_000452"
+        },
+        {
+          "namespace": "SIO",
+          "id": "SIO_000453"
+        },
+        {
+          "namespace": "SIO",
+          "id": "SIO_000454"
+        }
+      ],
+      "outputVariablePatterns": [
+        {
+          "name": "time",
+          "symbol": {
+                      "value": "time",
+                      "namespace": "urn:sedml:symbol"
+                    }
+        },
+        {
+          "name": "molecule count of a species",
+          "target": {"value": "molcount {species}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "molecule count of a state of a species",
+          "target": {"value": "molcountspecies {species}({state})", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "molecule count of a species in a 1-D range",
+          "target": {"value": "molcountinbox {species} {low-x} {hi-x}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "molecule count of a species in a 2-D range",
+          "target": {"value": "molcountinbox {species} {low-x} {hi-x} {low-y} {hi-y}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "molecule count of a species in a 3-D range",
+          "target": {"value": "molcountinbox {species} {low-x} {hi-x} {low-y} {hi-y} {low-z} {hi-z}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "molecule count of a species in a compartment",
+          "target": {"value": "molcountincmpt {species} {compartment}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "molecule count of a state of a species in a compartment",
+          "target": {"value": "molcountincmpt2 {species} {compartment} {state}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "molecule count of a species on a surface",
+          "target": {"value": "molcountonsurf {species} {surface}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "distribution of molecule counts of a species along a line",
+          "target": {"value": "molcountspace {species}({state}) {axis} {low} {hi} {bins}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "1-D distribution of molecule counts of a state of a species along a line of a plane",
+          "target": {"value": "molcountspace {species}({state}) {axis} {low} {hi} {bins} {low} {hi}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "1-D distribution of molecule counts of a state of a species along a line of a cube",
+          "target": {"value": "molcountspace {species}({state}) {axis} {low} {hi} {bins} {low} {hi} {low} {hi}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "2-D distribution of molecule counts of a state of a species in a plane",
+          "target": {"value": "molcountspace2d {species}({state}) z {low-x} {hi-x} {bins-x} {low-y} {hi-y} {bins-y}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "2-D distribution of molecule counts of a state of a species in a cube",
+          "target": {"value": "molcountspace2d {species}({state}) {axis} {low-1} {hi-1} {bins-1} {low-2} {hi-2} {bins-2} {low-3} {hi-3}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "1-D distribution of molecule counts of a state of a species along radii of a 1-D circle",
+          "target": {"value": "molcountspaceradial {species}({state}) {center-x} {radius} {bins}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "1-D distribution of molecule counts of a state of a species along radii of a circle",
+          "target": {"value": "molcountspaceradial {species}({state}) {center-x} {center-y} {radius} {bins}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "1-D distribution of molecule counts of a state of a species along radii of a sphere",
+          "target": {"value": "molcountspaceradial {species}({state}) {center-x} {center-y} {center-z} {radius} {bins}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "1-D distribution of molecule counts of a state of a species along radii of an angular segment of a circle",
+          "target": {"value": "molcountspacepolarangle {species}({state}) {center-x} {center-y} {pole-x} {pole-y} {radius-min} {radius-max} {bins}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "1-D distribution of molecule counts of a state of a species along radii of an angular segment of a shere",
+          "target": {"value": "molcountspacepolarangle {species}({state}) {center-x} {center-y} {center-z} {pole-x} {pole-y} {pole-z} {radius-min} {radius-max} {bins}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "1-D distribution of molecule counts of a state of a species along radii of a circle around molecules of second state of a second species",
+          "target": {"value": "radialdistribution {species-1}({state-1}) {species-2}({state-2}) {radius} {bins}", "grammar": "Smoldyn"}
+        },
+        {
+          "name": "1-D distribution of molecule counts of a state of a species along radii of a sphere around molecules of second state of a second species",
+          "target": {"value": "radialdistribution2 {species-1}({state-1}) {species-2}({state-2}) {low-x} {hi-x} {low-y} {hi-y} {low-z} {hi-z} {radius} {bins}", "grammar": "Smoldyn"}
+        }
+      ],
+      "availableSoftwareInterfaceTypes": ["command-line application", "library", "BioSimulators Docker image"],
+      "dependencies": []
+    }],
+    "interfaceTypes": [
+      "command-line application",
+      "library",
+      "BioSimulators Docker image"
+    ],
+    "supportedOperatingSystemTypes": [
+      "Mac OS",
+      "Linux",
+      "Windows"
+    ],
+    "supportedProgrammingLanguages": [{
+        "namespace": "Linguist",
+        "id": "C"
+      },
+      {
+        "namespace": "Linguist",
+        "id": "C++"
+      },
+      {
+        "namespace": "Linguist",
+        "id": "Python"
+      }
+    ],
+    "funding": [],
+    "biosimulators": {
+      "imageVersion": "1.0.0",
+      "specificationVersion": "1.0.0",
+      "validationTests": null,
+      "validated": false
+    }
+  }
