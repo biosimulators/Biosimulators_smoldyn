@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ '3.7.15', '3.8.12', '3.9.7', '3.10.4', '3.11.0' ]  # specific versions for cache
+        python-version: [ '3.7.15', '3.8.12', '3.9.12', '3.10.4', '3.11.0' ]  # specific versions for cache
 
     steps:
     - uses: actions/checkout@v2
